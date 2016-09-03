@@ -1,0 +1,26 @@
+//
+//  longest_sequence_of_positive_integers.cpp
+//  GoogleInterview
+//
+//  Created by Lixing Zhang on 7/14/16.
+//  Copyright © 2016 Lixing Zhang. All rights reserved.
+//
+
+#include <stdio.h>
+#include <vector>
+
+class lspi{
+    static int getLSPI (std::vector<int>& array) {
+        int lspi = 0;
+        int tmp_start_idx = 0;
+        for( int loop = 0; loop < array.size(); ++loop){
+            if (array[loop] < 0) {
+                lspi = std::max(lspi, loop + 1 - tmp_start_idx);
+                tmp_start_idx = loop;
+            }
+        }
+        
+        return lspi;
+    }
+};
+
